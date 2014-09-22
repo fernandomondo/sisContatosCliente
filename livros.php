@@ -31,12 +31,14 @@ $model = $controller->livros();
 			<th>Id</th>
 			<th>Nome</th>
 			<th>Autor</th>
+			<th>Quantidade</th>
 		</tr>
 		<?php foreach ($model as $item) { ?>
 	    <tr>
 			<td><?php echo $item->getId(); ?></td>
 			<td><?php echo $item->getNome(); ?></td>
 			<td><?php echo $item->getAutor(); ?></td>
+			<td><?php echo $item->getQuantidade(); ?></td>
 		</tr>   
 		<?php } ?>
 	</table>

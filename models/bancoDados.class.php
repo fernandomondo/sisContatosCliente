@@ -55,6 +55,7 @@ class BancoDados{
         	$livro->setId($dados[0]);
         	$livro->setNome($dados[1]);
         	$livro->setAutor($dados[2]);
+        	$livro->setQuantidade($dados[3]);
         	break;
         	}        	
     	}				
@@ -73,6 +74,7 @@ class BancoDados{
         	$livro->setId($dados[0]);
         	$livro->setNome($dados[1]);
         	$livro->setAutor($dados[2]);
+        	$livro->setQuantidade($dados[3]);
         	array_push($livros, $livro);
     	}				
 		fclose($arquivo); 
@@ -102,7 +104,7 @@ class BancoDados{
 	public function salvarLivro($livro){
 				
 		$arquivo =  fopen("livros.txt", "a+");
-		fwrite($arquivo, $livro->getId() . "||" . $livro->getNome() . "||" . $livro->getAutor() . "\r\n");
+		fwrite($arquivo, $livro->getId() . "||" . $livro->getNome() . "||" . $livro->getAutor() . "||" . $livro->getQuantidade() . "\r\n");
 		fclose($arquivo);  
 	}
 	

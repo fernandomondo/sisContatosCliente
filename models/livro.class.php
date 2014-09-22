@@ -5,6 +5,7 @@ class Livro{
 	private $id;
 	private $nome;
 	private $autor;	
+	private $quantidade;
 	
 	public function getId(){		
 		return $this->id;		
@@ -28,6 +29,14 @@ class Livro{
 	
 	public function setNome($nome){		
 		$this->nome = $nome;		
+	}
+	
+	public function getQuantidade(){
+		return $this->quantidade;		
+	}
+	
+	public function setQuantidade($quantidade){
+		$this->quantidade = $quantidade;
 	}
 	
 }

@@ -39,6 +39,10 @@ else
 		  <div class="form-group">
 		    <label for="autor">Autor</label>
 		    <input type="text" class="form-control" id="autor" name="autor" placeholder="autor do livro">
+		  </div>
+		  <div class="form-group">
+		    <label for="quantidade">Quantidade</label>
+		    <input type="numeric" class="form-control" id="quantidade" name="quantidade" placeholder="quantidade de livros disponível">
 		  </div>		 
 		  <button type="submit" class="btn btn-default">Salvar</button>
 		</form>

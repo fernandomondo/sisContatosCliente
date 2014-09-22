@@ -25,7 +25,7 @@ class LivrosController{
 		$livro->setId($_POST["id"]);
         $livro->setNome($_POST["nome"]);
         $livro->setAutor($_POST["autor"]);
-        	
+        $livro->setQuantidade($_POST["quantidade"]);	
         $this->banco->salvarLivro($livro);      	
 	
 	}
