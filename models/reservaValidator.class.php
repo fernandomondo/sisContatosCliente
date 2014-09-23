@@ -20,9 +20,9 @@ class ReservaValidator{
 			$errors["id"] = "Id nÃ£o informado";
 		
 		/*
-		 * não pode repetir mesmo livro para o mesmo aluno para a mesma data de retirada
+		 * nï¿½o pode repetir mesmo livro para o mesmo aluno para a mesma data de retirada
 		 * verificar se os campos foram informados
-		 * não deixar gravar a reserva para o mesmo livro
+		 * nï¿½o deixar gravar a reserva para o mesmo livro
 		 * 
 		 */
 		
@@ -36,8 +36,7 @@ class ReservaValidator{
 		
 		if($reserva->getAluno() == null)
 			$errors["id"] = "aluno nÃ£o informado";
-			
-			
+						
 		$quantidade = 0;
 		foreach ( $reservas as $item ) {       		
        		if($reserva->getLivro()->getId() == $item->getLivro()->getId())
@@ -45,14 +44,14 @@ class ReservaValidator{
 		}
 		
 		if($reserva->getLivro()->getQuantidade() == $quantidade)
-			 $errors["idLivro"] = "não é possivel fazer a reserva pois ultrapassa o número de exemplares.";			
+			 $errors["idLivro"] = "nï¿½o ï¿½ possivel fazer a reserva pois ultrapassa o nï¿½mero de exemplares.";			
 			
 		foreach ( $reservas as $item ) {
        		
-       		if($reserva->getLivro()->getId() == $item->getLivro()->getId()){
+       		/*if($reserva->getLivro()->getId() == $item->getLivro()->getId()){
        			$errors["idLivro"] = "nÃ£o deixar gravar a reserva para o mesmo livro";
        			break;
-       		}
+       		}*/
        		
        		if($reserva->getAluno()->getId() == $item->getAluno()->getId())
        			if($reserva->getLivro()->getId() == $item->getLivro()->getId())

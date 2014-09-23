@@ -42,7 +42,7 @@ else
 		  </div>
 		  <div class="form-group">
 		    <label for="quantidade">Quantidade</label>
-		    <input type="numeric" class="form-control" id="quantidade" name="quantidade" placeholder="quantidade de livros disponível">
+		    <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="quantidade de livros disponï¿½vel">
 		  </div>		 
 		  <button type="submit" class="btn btn-default">Salvar</button>
 		</form>

@@ -1,3 +1,3 @@
-1||Harry Potter||JK
-2||Senhor dos aneis||JRR
-20||O castelo Animado||Diana Wynne Jones
+1||Harry Potter||JK||1
+2||Senhor dos aneis||JRR||1
+20||O castelo Animado||Diana Wynne Jones||1
