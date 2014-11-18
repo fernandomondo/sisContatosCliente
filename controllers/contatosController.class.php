@@ -48,9 +48,9 @@ class ContatosController{
 	
 	}
 	
-	public function contatos(){
+	public function listaContatos(){
 		
-	    return 	$this->contatoDao->retornarTodosOsContatos();		
+	    return 	(object) array("contatos" => $this->contatoDao->retornarTodosOsContatos());		
 	}
 	
 	

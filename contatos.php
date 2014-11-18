@@ -1,10 +1,10 @@
 <?php
 
-include_once("controllers/alunosController.class.php");
+include_once("controllers/contatosController.class.php");
 
-$controller = new AlunosController();
+$controller = new ContatosController();
 
-$model = $controller->alunos()
+$model = $controller->listaContatos()
 
 ?>
 
@@ -21,9 +21,9 @@ $model = $controller->alunos()
 <?php include("menu.php") ?>
 <div class="container"> 
 
-	<h1>Alunos</h1>
+	<h1>Contatos</h1>
 	
-	<a href="aluno-criar.php" class="btn btn-primary">Criar Novo</a>
+	<a href="contato-criar.php" class="btn btn-primary">Criar Novo</a>
 	<table class="table">
 		<tt>
 			<th>Id</th>
@@ -39,7 +39,7 @@ $model = $controller->alunos()
 	    <tr>
 			<td><?php echo $contato->getId(); ?></td>
 			<td><?php echo $contato->getNome(); ?></td>	
-			<td><?php echo $contato->getId(); ?></td>
+			<td><?php echo $contato->getApelido(); ?></td>
 			<td><?php echo $contato->getNome(); ?></td>
 			<td><?php echo $contato->getId(); ?></td>
 			<td><?php echo $contato->getNome(); ?></td>		

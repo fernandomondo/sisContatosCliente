@@ -2,6 +2,7 @@
 
 class Contato {
 
+	private $id;
     private $nome;
     private $apelido;
     private $telefone;
@@ -9,6 +10,10 @@ class Contato {
     private $email;
     private $dataNasc;
     
+    public function getId() {
+		return $this->id;	
+	} 
+	
     public function getNome() {
 		return $this->nome;	
 	} 
@@ -33,7 +38,11 @@ class Contato {
 		return $this->dataNasc;	
 	} 
 	
-	 public function setNome($nome) {
+	public function setId($id) {
+		return $this->id = $id;	
+	} 
+
+	public function setNome($nome) {
 		 $this->nome = $nome;	
 	} 
 	
@@ -55,8 +64,7 @@ class Contato {
 	
 	public function setDataNasc($dataNasc) {
 		 $this->dataNasc = $dataNasc;	
-	} 
-    
+	}    
     
 }
 ?>
