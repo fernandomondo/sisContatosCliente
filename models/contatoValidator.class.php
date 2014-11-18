@@ -1,6 +1,6 @@
 <?php
 
-include_once("models/reserva.class.php");
+include_once("models/contato.class.php");
 
 class ContatoValidator{
 	
@@ -10,14 +10,14 @@ class ContatoValidator{
 		$this->contatoDao = $contatoDao;
 	}	
 	
-	public function validate($reserva){		
+	public function validate($contato){		
 		
 		$errors = array();
 		
 		//verificar se os campos foram informados
 		
-		if($reserva->getId() == null)
-			$errors["id"] = "Id não informado";
+		if($contato->getNome() == null)
+			$errors["nome"] = "Nome n�o informado";
 		
 		/*
 		 * não pode repetir mesmo livro para o mesmo aluno para a mesma data de retirada
@@ -26,7 +26,7 @@ class ContatoValidator{
 		 * 
 		 */
 		
-		$reservas = $this->contatoDao->retornarTodosOsContatos();
+		/*$reservas = $this->contatoDao->retornarTodosOsContatos();
 		
 		if ($reserva->getDataEntrega() < $reserva->getDataRetirada())
 			$errors["dataEntrega"] = "data de entrega deve ser maior que a data de retirada.";
@@ -53,14 +53,14 @@ class ContatoValidator{
        			break;
        		}*/
        		
-       		if($reserva->getAluno()->getId() == $item->getAluno()->getId())
+       		/*if($reserva->getAluno()->getId() == $item->getAluno()->getId())
        			if($reserva->getLivro()->getId() == $item->getLivro()->getId())
        			  if($reserva->getDataRetirada() == $item->getDataRetirada()){       			
        					$errors["idLivro"] = "mesmo livro para mesmo aluno na mesma data não permitido.";
        					break;
-       				}
+       				}*/
        		
-		}		
+		/*}		*/
 			
 		return $errors;
 		

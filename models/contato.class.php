@@ -1,18 +1,15 @@
 <?php
 
 class Contato {
-
-	private $id;
+	
     private $nome;
     private $apelido;
     private $telefone;
     private $celular;
     private $email;
     private $dataNasc;
-    
-    public function getId() {
-		return $this->id;	
-	} 
+    private $idUsuario;
+      
 	
     public function getNome() {
 		return $this->nome;	
@@ -36,11 +33,11 @@ class Contato {
 	
 	public function getDataNasc() {
 		return $this->dataNasc;	
-	} 
+	}
 	
-	public function setId($id) {
-		return $this->id = $id;	
-	} 
+	public function getIdUsuario() {
+		return $this->idUsuario;
+	}
 
 	public function setNome($nome) {
 		 $this->nome = $nome;	
@@ -64,7 +61,13 @@ class Contato {
 	
 	public function setDataNasc($dataNasc) {
 		 $this->dataNasc = $dataNasc;	
-	}    
+	}  
+	
+	public function setIdUsuario($idUsuario) {
+		$this->idUsuario = $idUsuario;
+	}
+	
+	
     
 }
 ?>

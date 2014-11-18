@@ -1,12 +1,13 @@
 <?php
 
+
 class Connection {
 
 	private static $conn;
 	private static $hostname		="localhost"; //ou 127.0.0.1  ip padrao de servidor
-	private static $dataBaseName	="dbconta";
+	private static $dataBaseName	="dbContatos";
 	private static $userName		="root";
-	private static $pwd				="";
+	private static $pwd				="root";
 	private static $dataBaseType	= "mysql";
 	
 public static function connect(){

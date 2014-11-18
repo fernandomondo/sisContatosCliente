@@ -6,8 +6,7 @@ include_once("models/contatoValidator.class.php");
 
 
 class ContatosController{
-	
-	
+		
 	private $contatoDao;
 	private $contatoValidator;
 	
@@ -24,22 +23,22 @@ class ContatosController{
 	public function criarContatoPost(){
 		
 		$contato = new Contato();
-				
-		$contato->setId($_POST["id"]);
+						
         $contato->setNome($_POST["nome"]);
         $contato->setApelido($_POST["apelido"]);
         $contato->setTelefone($_POST["telefone"]);
         $contato->setCelular($_POST["celular"]);
         $contato->setEmail($_POST["email"]);
-        $contato->setDataNasc($_POST["email"]);
+        $contato->setDataNasc($_POST["dataNasc"]);
+        $contato->setIdUsuario(1);        
         
         $errors = $this->contatoValidator->validate($contato);
         
         if (count($errors) == 0){
         
-        $this->contatoDao->salvarContato($contato);    
+        	$this->contatoDao->salvarContato($contato);    
         
-       		header("Location: /contatos.php");
+       		header("Location: /sisContatosCliente/contatos.php");
 			die();
         }
         

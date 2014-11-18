@@ -25,24 +25,24 @@ $model = $controller->listaContatos()
 	
 	<a href="contato-criar.php" class="btn btn-primary">Criar Novo</a>
 	<table class="table">
-		<tt>
-			<th>Id</th>
+		<tr>		
 			<th>Nome</th>
 			<th>Apellido</th>
-			<th>Nome</th>
-			<th>Id</th>
-			<th>Nome</th>
-			<th>Id</th>
-			<th>Nome</th>			
+			<th>Telefone</th>
+			<th>Celular</th>
+			<th>Email</th>
+			<th>Data Nascimento</th>
+			<th>Id Usuario</th>			
 		</tr>
 		<?php foreach ($model->contatos as $contato) { ?>
-	    <tr>
-			<td><?php echo $contato->getId(); ?></td>
+	    <tr>			
 			<td><?php echo $contato->getNome(); ?></td>	
 			<td><?php echo $contato->getApelido(); ?></td>
-			<td><?php echo $contato->getNome(); ?></td>
-			<td><?php echo $contato->getId(); ?></td>
-			<td><?php echo $contato->getNome(); ?></td>		
+			<td><?php echo $contato->getTelefone(); ?></td>
+			<td><?php echo $contato->getCelular(); ?></td>
+			<td><?php echo $contato->getEmail(); ?></td>
+			<td><?php echo $contato->getDataNasc(); ?></td>
+			<td><?php echo $contato->getIdUsuario(); ?></td>		
 		</tr>   
 		<?php } ?>
 	</table>

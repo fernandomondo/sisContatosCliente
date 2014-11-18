@@ -1,14 +1,14 @@
 <?php
 
+include_once("models/connection.class.php");
+
 abstract class Dao {
 
     private $tableName;
 	private $rs;   //record set   - retorno da consulta
 	private $rowsSelAffected;
 
-	public function __construct($tableName){
-		include_once('model/connection.class.php');
-		
+	public function __construct($tableName){		
 		$this->tableName = $tableName;   
 	}
 	public function insert($fields, $values){
@@ -24,7 +24,9 @@ abstract class Dao {
 	    //echo $sql; 
 		//comando para executar a query no banco de dados
 		Connection::getConn()->beginTransaction();
-		  		
+
+		echo $sql;
+		
 		//RETORNO DO BANCO DE DADOS APOS EXECUCAO DA SQL
 		$rowsAffected = Connection::getConn()->exec($sql);
 		Connection::getConn()->commit();
