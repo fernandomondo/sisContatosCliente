@@ -1,10 +1,11 @@
 <?php
 
-include_once("models/bancoDados.class.php");
+include_once("models/contatoDao.class.php");
 include_once("models/contato.class.php");
+include_once("models/contatoValidator.class.php");
 
 
-class AlunosController{
+class ContatosController{
 	
 	
 	private $contatoDao;
@@ -12,7 +13,7 @@ class AlunosController{
 	
 	public function __construct(){		
 		$this->contatoDao = new ContatoDao();
-		$this->contatoValidator = new ContatoValidator();
+		$this->contatoValidator = new ContatoValidator($this->contatoDao);
 	}
 	
 	public function criarContatoGet(){		

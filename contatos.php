@@ -15,7 +15,7 @@ $model = $controller->alunos()
 	<meta http-equiv="Content-Language" content="en" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<title>Sistema Biblioteca</title>
+	<title>Sistema de Contatos</title>
 </head>
 <body>
 <?php include("menu.php") ?>
@@ -27,12 +27,22 @@ $model = $controller->alunos()
 	<table class="table">
 		<tt>
 			<th>Id</th>
+			<th>Nome</th>
+			<th>Apellido</th>
+			<th>Nome</th>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Id</th>
 			<th>Nome</th>			
 		</tr>
-		<?php foreach ($model as $item) { ?>
+		<?php foreach ($model->contatos as $contato) { ?>
 	    <tr>
-			<td><?php echo $item->getId(); ?></td>
-			<td><?php echo $item->getNome(); ?></td>			
+			<td><?php echo $contato->getId(); ?></td>
+			<td><?php echo $contato->getNome(); ?></td>	
+			<td><?php echo $contato->getId(); ?></td>
+			<td><?php echo $contato->getNome(); ?></td>
+			<td><?php echo $contato->getId(); ?></td>
+			<td><?php echo $contato->getNome(); ?></td>		
 		</tr>   
 		<?php } ?>
 	</table>

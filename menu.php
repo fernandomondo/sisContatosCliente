@@ -11,9 +11,8 @@
     </div>  
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="alunos.php">Alunos</a></li>
-        <li><a href="livros.php">Livros</a></li>
-        <li><a href="reservas.php">Reservas</a></li>       
+        <li class="active"><a href="contatos.php">Contatos</a></li>     
+        <li class="active"><a href="login.php">Login</a></li>       
       </ul>           
     </div>
   </div>

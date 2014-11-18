@@ -2,12 +2,12 @@
 
 include_once("models/reserva.class.php");
 
-class ReservaValidator{
+class ContatoValidator{
 	
-	private $banco;
+	private $contatoDao;
 	
-	public function __construct($banco){
-		$this->banco = $banco;
+	public function __construct($contatoDao){
+		$this->contatoDao = $contatoDao;
 	}	
 	
 	public function validate($reserva){		
@@ -20,13 +20,13 @@ class ReservaValidator{
 			$errors["id"] = "Id não informado";
 		
 		/*
-		 * n�o pode repetir mesmo livro para o mesmo aluno para a mesma data de retirada
+		 * não pode repetir mesmo livro para o mesmo aluno para a mesma data de retirada
 		 * verificar se os campos foram informados
-		 * n�o deixar gravar a reserva para o mesmo livro
+		 * não deixar gravar a reserva para o mesmo livro
 		 * 
 		 */
 		
-		$reservas = $this->banco->retornarTodasAsReservas();
+		$reservas = $this->contatoDao->retornarTodosOsContatos();
 		
 		if ($reserva->getDataEntrega() < $reserva->getDataRetirada())
 			$errors["dataEntrega"] = "data de entrega deve ser maior que a data de retirada.";
