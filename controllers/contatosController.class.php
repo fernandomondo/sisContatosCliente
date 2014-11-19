@@ -3,14 +3,16 @@
 include_once("models/contatoDao.class.php");
 include_once("models/contato.class.php");
 include_once("models/contatoValidator.class.php");
-
+include_once("models/gerenciadorUsuarios.class.php");
 
 class ContatosController{
 		
 	private $contatoDao;
 	private $contatoValidator;
 	
-	public function __construct(){		
+	public function __construct(){	
+		GerenciadorUsuarios::verificarUsuarioAutenticado();
+		
 		$this->contatoDao = new ContatoDao();
 		$this->contatoValidator = new ContatoValidator($this->contatoDao);
 	}
