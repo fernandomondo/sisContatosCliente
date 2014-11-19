@@ -112,18 +112,19 @@ public function find($columns, $filter){
 	  {
 		//faz a concexao com o banco de dados
 		Connection::connect();
-	
-		//monta a clausula WHERE
+
+	    //monta a clausula WHERE
 		if($filter !=""){
 			$filter = " WHERE ".$filter;
 		}
 
 		//montar o comando sql para CONSULTA
 		$sql = "SELECT $columns FROM $this->tableName $filter";
+
 		
 		$this->rs = Connection::getConn()->query($sql);
 		
-		$this->rowsSelAffected = $this->rs->columnCount();
+		$this->rowsSelAffected = $this->rs->rowCount();
 		
 		//encerrar a concexao com o banco
 		Connection::disconnect();

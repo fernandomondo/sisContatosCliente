@@ -17,7 +17,18 @@ class ContatoDao extends Dao {
 		return $contato;
 	}
 	public function retornarContatoPorNome($nome) {
-		parent::find ( "*", " nome = " + $nome );
+		
+		parent::find ( "*", " nome = '$nome'");
+		
+		$rows = parent::getRecordSet ();
+				
+		for($i = 0; $i < count ( $rows ); $i ++) {
+			$row = $rows [$i];
+				
+			return $this->converter ( $row );
+		}
+		
+		return null;		
 	}
 	public function retornarTodosOsContatos() {
 		parent::find ( "*", "" );
@@ -51,6 +62,20 @@ class ContatoDao extends Dao {
 		if ($rowsAffected != 1) {
 			throw new Exception ( "Ocorreu um erro ao salvar o contato. rowsAffected: $rowsAffected" );
 		}
+	}
+	
+	public function atualizarContato($contato){
+		$nome = $contato->getNome ();
+		$apelido = $contato->getApelido ();
+		$telefone = $contato->getTelefone ();
+		$celular = $contato->getCelular ();
+		$email = $contato->getEmail();
+		$dataNasc = $contato->getDataNasc();
+		$idUsuario = $contato->getIdUsuario ();
+		
+		$values = "'$nome','$apelido','$telefone','$celular','$email','$dataNasc',$idUsuario";
+		
+		parent::update("nome, apelido, telephone, celular, email, dt_nasc, idUsuario", $values);		
 	}
 }
 ?>

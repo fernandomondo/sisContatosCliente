@@ -9,8 +9,7 @@ class Contato {
     private $email;
     private $dataNasc;
     private $idUsuario;
-      
-	
+      	
     public function getNome() {
 		return $this->nome;	
 	} 

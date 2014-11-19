@@ -15,15 +15,33 @@ class ContatosController{
 		$this->contatoValidator = new ContatoValidator($this->contatoDao);
 	}
 	
-	public function criarContatoGet(){		
-		return (object) array("contato" => new Contato(), "errors" => array());
+	public function criarContatoGet(){	
+
+		$contato;
+		
+		if(isset($_GET["editar"])){
+			$nome = $_GET["editar"];
+			$contato = $this->contatoDao->retornarContatoPorNome($nome);
+		}else
+		{
+			$contato = new Contato();			
+		}
+		
+		return (object) array("contato" => $contato, "errors" => array());
 	}
-	
-	
+		
 	public function criarContatoPost(){
 		
-		$contato = new Contato();
-						
+		$contato;
+		
+		if (isset($_POST["editar"]))
+		{
+			$contato = $this->contatoDao->retornarContatoPorNome($_POST["nome"]);
+		}
+		else{	
+			$contato = new Contato();
+		}
+					
         $contato->setNome($_POST["nome"]);
         $contato->setApelido($_POST["apelido"]);
         $contato->setTelefone($_POST["telefone"]);
@@ -36,7 +54,13 @@ class ContatosController{
         
         if (count($errors) == 0){
         
-        	$this->contatoDao->salvarContato($contato);    
+        	if (isset($_POST["editar"]))
+        	{
+        		$this->contatoDao->atualizarContato($contato);    
+        	}
+        	else{
+        		$this->contatoDao->salvarContato($contato);    
+        	}
         
        		header("Location: /sisContatosCliente/contatos.php");
 			die();

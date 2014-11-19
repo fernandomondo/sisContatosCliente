@@ -32,7 +32,8 @@ $model = $controller->listaContatos()
 			<th>Celular</th>
 			<th>Email</th>
 			<th>Data Nascimento</th>
-			<th>Id Usuario</th>			
+			<th>Id Usuario</th>	
+			<th></th>			
 		</tr>
 		<?php foreach ($model->contatos as $contato) { ?>
 	    <tr>			
@@ -42,7 +43,8 @@ $model = $controller->listaContatos()
 			<td><?php echo $contato->getCelular(); ?></td>
 			<td><?php echo $contato->getEmail(); ?></td>
 			<td><?php echo $contato->getDataNasc(); ?></td>
-			<td><?php echo $contato->getIdUsuario(); ?></td>		
+			<td><?php echo $contato->getIdUsuario(); ?></td>	
+			<td><a class="btn btn-sm btn-default" href="contato-criar.php?editar=<?php echo $contato->getNome();?>">Editar</a></td>	
 		</tr>   
 		<?php } ?>
 	</table>
