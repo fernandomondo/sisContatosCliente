@@ -5,10 +5,9 @@ class GerenciadorUsuarios {
 	public function __construct() {
 		$this->usuarioDao = new UsuarioDao ();
 	}
-	public function autenticar($usuario, $senha) {
-		$user = $this->usuarioDao->existeUsuario ( $usuario, $senha );
-		if ($user != null) {
-			$_SESSION ["usuario"] = $user->getId ();
+	public function autenticar($usuario) {		
+		if ($usuario != null) {
+			$_SESSION ["usuario"] = $usuario->getId ();
 		} else {
 			header ( "Location: /sisContatosCliente/login.php" ); // redirecionar para o login
 			die ();

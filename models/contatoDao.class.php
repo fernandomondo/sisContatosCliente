@@ -7,28 +7,27 @@ class ContatoDao extends Dao {
 	}
 	private function converter($row) {
 		$contato = new Contato ();
-		$contato->setNome( $row ["nome"] );
+		$contato->setNome ( $row ["nome"] );
 		$contato->setCelular ( $row ["celular"] );
 		$contato->setApelido ( $row ["apelido"] );
 		$contato->setEmail ( $row ["email"] );
 		$contato->setTelefone ( $row ["telephone"] );
 		$contato->setDataNasc ( $row ["dt_nasc"] );
-		$contato->setIdUsuario( $row ["idUsuario"] );
+		$contato->setIdUsuario ( $row ["idUsuario"] );
 		return $contato;
 	}
 	public function retornarContatoPorNome($nome) {
-		
-		parent::find ( "*", " nome = '$nome'");
+		parent::find ( "*", " nome = '$nome'" );
 		
 		$rows = parent::getRecordSet ();
-				
+		
 		for($i = 0; $i < count ( $rows ); $i ++) {
 			$row = $rows [$i];
-				
+			
 			return $this->converter ( $row );
 		}
 		
-		return null;		
+		return null;
 	}
 	public function retornarTodosOsContatos() {
 		parent::find ( "*", "" );
@@ -46,13 +45,12 @@ class ContatoDao extends Dao {
 		return $contatos;
 	}
 	public function salvarContato($contato) {
-		
 		$nome = $contato->getNome ();
 		$apelido = $contato->getApelido ();
 		$telefone = $contato->getTelefone ();
 		$celular = $contato->getCelular ();
-		$email = $contato->getEmail();
-		$dataNasc = $contato->getDataNasc();
+		$email = $contato->getEmail ();
+		$dataNasc = $contato->getDataNasc ();
 		$idUsuario = $contato->getIdUsuario ();
 		
 		$values = "'$nome','$apelido','$telefone','$celular','$email','$dataNasc',$idUsuario";
@@ -63,19 +61,18 @@ class ContatoDao extends Dao {
 			throw new Exception ( "Ocorreu um erro ao salvar o contato. rowsAffected: $rowsAffected" );
 		}
 	}
-	
-	public function atualizarContato($contato){
+	public function atualizarContato($contato) {
 		$nome = $contato->getNome ();
 		$apelido = $contato->getApelido ();
 		$telefone = $contato->getTelefone ();
 		$celular = $contato->getCelular ();
-		$email = $contato->getEmail();
-		$dataNasc = $contato->getDataNasc();
+		$email = $contato->getEmail ();
+		$dataNasc = $contato->getDataNasc ();
 		$idUsuario = $contato->getIdUsuario ();
 		
 		$values = "'$nome','$apelido','$telefone','$celular','$email','$dataNasc',$idUsuario";
 		
-		parent::update("nome, apelido, telephone, celular, email, dt_nasc, idUsuario", $values);		
+		parent::update ( "nome, apelido, telephone, celular, email, dt_nasc, idUsuario", $values );
 	}
 }
 ?>

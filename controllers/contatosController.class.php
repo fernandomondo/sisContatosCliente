@@ -50,7 +50,7 @@ class ContatosController{
         $contato->setCelular($_POST["celular"]);
         $contato->setEmail($_POST["email"]);
         $contato->setDataNasc($_POST["dataNasc"]);
-        $contato->setIdUsuario(1);        
+        $contato->setIdUsuario(GerenciadorUsuarios::getIdUsuario());        
         
         $errors = $this->contatoValidator->validate($contato);
         

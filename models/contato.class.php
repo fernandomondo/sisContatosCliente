@@ -64,9 +64,6 @@ class Contato {
 	
 	public function setIdUsuario($idUsuario) {
 		$this->idUsuario = $idUsuario;
-	}
-	
-	
-    
+	}    
 }
 ?>

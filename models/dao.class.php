@@ -1,186 +1,159 @@
 <?php
-
-include_once("models/connection.class.php");
-
+include_once ("models/connection.class.php");
 abstract class Dao {
-
-    private $tableName;
-	private $rs;   //record set   - retorno da consulta
+	private $tableName;
+	private $rs; // record set - retorno da consulta
 	private $rowsSelAffected;
-
-	public function __construct($tableName){		
-		$this->tableName = $tableName;   
+	public function __construct($tableName) {
+		$this->tableName = $tableName;
 	}
-	public function insert($fields, $values){
-	
-	 try
-	 {
-
-		//faz a concexao com o banco de dados
-		Connection::connect();
-		
-		//montar o comando sql para gravar
-		$sql = "INSERT INTO $this->tableName ($fields) VALUES ($values)";
-	    //echo $sql; 
-		//comando para executar a query no banco de dados
-		Connection::getConn()->beginTransaction();
-
-		echo $sql;
-		
-		//RETORNO DO BANCO DE DADOS APOS EXECUCAO DA SQL
-		$rowsAffected = Connection::getConn()->exec($sql);
-		Connection::getConn()->commit();
-		//encerrar a concexao com o banco
-		Connection::disconnect();
-		
-		return $rowsAffected;
-	  }
-	  catch(Exception $ex){
-			Connection::getConn()->rollBack();	       
-			throw($ex);
+	public function insert($fields, $values) {
+		try {
+			
+			// faz a concexao com o banco de dados
+			Connection::connect ();
+			
+			// montar o comando sql para gravar
+			$sql = "INSERT INTO $this->tableName ($fields) VALUES ($values)";
+			// echo $sql;
+			// comando para executar a query no banco de dados
+			Connection::getConn ()->beginTransaction ();
+			
+			echo $sql;
+			
+			// RETORNO DO BANCO DE DADOS APOS EXECUCAO DA SQL
+			$rowsAffected = Connection::getConn ()->exec ( $sql );
+			Connection::getConn ()->commit ();
+			// encerrar a concexao com o banco
+			Connection::disconnect ();
+			
+			return $rowsAffected;
+		} catch ( Exception $ex ) {
+			Connection::getConn ()->rollBack ();
+			throw ($ex);
 		}
 	}
-
-	public function update($fieldsValues, $filter){
-	
-	  try
-	  {
-		//faz a concexao com o banco de dados
-		Connection::connect();
-		
-		//monta a clausula WHERE
-		if($filter !=""){
-			$filter = " WHERE ".$filter;
-		}
-
-		//montar o comando sql para gravar
-		$sql = "UPDATE $this->tableName SET $fieldsValues $filter";
-		
-		
-		//comando para executar a query no banco de dados
-		Connection::getConn()->beginTransaction();
-		
-		//RETORNO DO BANCO DE DADOS APOS EXECUCAO DA SQL
-		$rowsAffected = Connection::getConn()->exec($sql);
-		Connection::getConn()->commit();
-
-		//encerrar a concexao com o banco
-		Connection::disconnect();
-		
-		return $rowsAffected;
-	  }
-	  catch(Exception $ex){
-			Connection::getConn()->rollBack();	       
-			throw($ex);
-		}
-	  
-	}
-		public function delete($filter){
-	  try
-	  {
-		//faz a concexao com o banco de dados
-		Connection::connect();
-		
-		//monta a clausula DELETE
-		if($filter !=""){
-			$filter = " WHERE ".$filter;
-		}
-
-		//montar o comando sql para EXCLUSAO
-		$sql = "DELETE FROM $this->tableName $filter";
-		
-		//comando para executar a query no banco de dados
-		Connection::getConn()->beginTransaction();
-		
-		//RETORNO DO BANCO DE DADOS APOS EXECUCAO DA SQL
-		$rowsAffected = Connection::getConn()->exec($sql);
-		Connection::getConn()->commit();
-		
-		//encerrar a concexao com o banco
-		Connection::disconnect();
-		
-		return $rowsAffected;
-	  }
-	  catch(Exception $ex){
-			Connection::getConn()->rollBack();	       
-			throw($ex);
- 	  }
-	  
-	}
-public function find($columns, $filter){
-	  try
-	  {
-		//faz a concexao com o banco de dados
-		Connection::connect();
-
-	    //monta a clausula WHERE
-		if($filter !=""){
-			$filter = " WHERE ".$filter;
-		}
-
-		//montar o comando sql para CONSULTA
-		$sql = "SELECT $columns FROM $this->tableName $filter";
-
-		
-		$this->rs = Connection::getConn()->query($sql);
-		
-		$this->rowsSelAffected = $this->rs->rowCount();
-		
-		//encerrar a concexao com o banco
-		Connection::disconnect();
-
-		return $this->rowsSelAffected;		
-	  }
-	  catch(Exception $ex){
-	       
-			throw($ex);
-		}
-	  
-	}
-	public function executeSQL($sql)
-		{
-	//faz a concexao com o banco de dados
-			Connection::connect();
-		
-					
-			$this->rs = Connection::getConn()->query($sql);
-			if(!$this->rs){
-				return NULL;	
+	public function update($fieldsValues, $filter) {
+		try {
+			// faz a concexao com o banco de dados
+			Connection::connect ();
+			
+			// monta a clausula WHERE
+			if ($filter != "") {
+				$filter = " WHERE " . $filter;
 			}
 			
-			while($row=$this->rs->fetch()){
-				$return[] = $row;
-					
-			}		
+			// montar o comando sql para gravar
+			$sql = "UPDATE $this->tableName SET $fieldsValues $filter";
 			
-			//encerrar a concexao com o banco
-			Connection::disconnect();
-	
-			return $return;		
+			// comando para executar a query no banco de dados
+			Connection::getConn ()->beginTransaction ();
+			
+			// RETORNO DO BANCO DE DADOS APOS EXECUCAO DA SQL
+			$rowsAffected = Connection::getConn ()->exec ( $sql );
+			Connection::getConn ()->commit ();
+			
+			// encerrar a concexao com o banco
+			Connection::disconnect ();
+			
+			return $rowsAffected;
+		} catch ( Exception $ex ) {
+			Connection::getConn ()->rollBack ();
+			throw ($ex);
 		}
-	public function getRecordSet(){
-	  try
-	  {
-		$return = NULL;
+	}
+	public function delete($filter) {
+		try {
+			// faz a concexao com o banco de dados
+			Connection::connect ();
+			
+			// monta a clausula DELETE
+			if ($filter != "") {
+				$filter = " WHERE " . $filter;
+			}
+			
+			// montar o comando sql para EXCLUSAO
+			$sql = "DELETE FROM $this->tableName $filter";
+			
+			// comando para executar a query no banco de dados
+			Connection::getConn ()->beginTransaction ();
+			
+			// RETORNO DO BANCO DE DADOS APOS EXECUCAO DA SQL
+			$rowsAffected = Connection::getConn ()->exec ( $sql );
+			Connection::getConn ()->commit ();
+			
+			// encerrar a concexao com o banco
+			Connection::disconnect ();
+			
+			return $rowsAffected;
+		} catch ( Exception $ex ) {
+			Connection::getConn ()->rollBack ();
+			throw ($ex);
+		}
+	}
+	public function find($columns, $filter) {
+		try {
+			// faz a concexao com o banco de dados
+			Connection::connect ();
+			
+			// monta a clausula WHERE
+			if ($filter != "") {
+				$filter = " WHERE " . $filter;
+			}
+			
+			// montar o comando sql para CONSULTA
+			$sql = "SELECT $columns FROM $this->tableName $filter";
+			
+			$this->rs = Connection::getConn ()->query ( $sql );
+			
+			$this->rowsSelAffected = $this->rs->rowCount ();
+			
+			// encerrar a concexao com o banco
+			Connection::disconnect ();
+			
+			return $this->rowsSelAffected;
+		} catch ( Exception $ex ) {
+			
+			throw ($ex);
+		}
+	}
+	public function executeSQL($sql) {
+		// faz a concexao com o banco de dados
+		Connection::connect ();
 		
-		if(!$this->rs){
-			
-			return NULL;	
+		$this->rs = Connection::getConn ()->query ( $sql );
+		if (! $this->rs) {
+			return NULL;
 		}
 		
-		while($row=$this->rs->fetch()){
-			
-			$return[] = $row;
-				
+		while ( $row = $this->rs->fetch () ) {
+			$return [] = $row;
 		}
-			
+		
+		// encerrar a concexao com o banco
+		Connection::disconnect ();
+		
 		return $return;
-	  }
-	  catch(Exception $ex){
-	       
-			throw($ex);
+	}
+	public function getRecordSet() {
+		try {
+			$return = NULL;
+			
+			if (! $this->rs) {
+				
+				return NULL;
+			}
+			
+			while ( $row = $this->rs->fetch () ) {
+				
+				$return [] = $row;
+			}
+			
+			return $return;
+		} catch ( Exception $ex ) {
+			
+			throw ($ex);
 		}
-	 
-	}	
+	}
 }
 ?>
