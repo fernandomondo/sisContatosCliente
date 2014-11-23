@@ -19,7 +19,7 @@ class Usuario {
 	} 
 	
 	public function setId($id) {
-		$this->nome = $id;
+		$this->id = $id;
 	}
 		
 	public function setNome($nome) {

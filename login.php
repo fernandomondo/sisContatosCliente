@@ -8,7 +8,6 @@ $model;
 
 if ($_SERVER ['REQUEST_METHOD'] === 'POST') {
 	$model = $controller->loginPost ();
-	echo 'post';
 } else
 	$model = $controller->loginGet ();
 

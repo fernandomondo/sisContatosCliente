@@ -10,10 +10,10 @@
 <title>Sistema Contatos</title>
 </head>
 <body>
-<?php include("menu.php")?>
+<?php include("menu.php"); echo  $_SESSION ["usuario"]; ?>
 <div class="container">
 
-		<h1>Sistema de Contatos</h1>
+		<h1>Sistema de Contatos</h1> 
 	</div>
 </body>
 </html>

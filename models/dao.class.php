@@ -106,6 +106,7 @@ abstract class Dao {
 			
 			$this->rs = Connection::getConn ()->query ( $sql );
 			
+			echo $this->rs->columnCount();
 			$this->rowsSelAffected = $this->rs->rowCount ();
 			
 			// encerrar a concexao com o banco
