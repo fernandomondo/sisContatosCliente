@@ -22,7 +22,7 @@ class GerenciadorUsuarios {
 	}
 	
 	public static function getIdUsuario() {
-		return parseInt($_SESSION ["usuario"]);
+		return $_SESSION ["usuario"];
 	}
 }
 

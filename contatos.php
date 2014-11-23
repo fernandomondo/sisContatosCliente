@@ -3,7 +3,9 @@ include_once ("controllers/contatosController.class.php");
 
 $controller = new ContatosController ();
 
-$model = $controller->listaContatos ()?>
+$model = $controller->listaContatos ();
+
+?>
 
 <!DOCTYPE HTML>
 <html>
@@ -33,6 +35,7 @@ $model = $controller->listaContatos ()?>
 				<th>Data Nascimento</th>
 				<th>Id Usuario</th>
 				<th></th>
+				<th></th>
 			</tr>
 		<?php foreach ($model->contatos as $contato) { ?>
 	    <tr>
@@ -45,6 +48,8 @@ $model = $controller->listaContatos ()?>
 				<td><?php echo $contato->getIdUsuario(); ?></td>
 				<td><a class="btn btn-sm btn-default"
 					href="contato-criar.php?editar=<?php echo $contato->getNome();?>">Editar</a></td>
+				<td><a class="btn btn-sm btn-default"
+					href="contato-criar.php?excluir=<?php echo $contato->getNome();?>">Excluir</a></td>
 			</tr>   
 		<?php } ?>
 	</table>

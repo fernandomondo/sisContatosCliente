@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once("models/contatoDao.class.php");
 include_once("models/contato.class.php");
@@ -17,10 +18,20 @@ class ContatosController{
 		$this->contatoValidator = new ContatoValidator($this->contatoDao);
 	}
 	
-	public function criarContatoGet(){	
-
-		$contato;
+	public function excluirContatoGet($nome){			
 		
+			$contato = $this->contatoDao->retornarContatoPorNome($nome);
+					
+			$this->contatoDao->excluirContato($contato);
+			
+			header ( "Location: /sisContatosCliente/contatos.php" ); //exclui e redirecionar para a lista
+			die ();
+	}
+	
+	
+	
+	public function criarContatoGet(){			
+		$contato;		
 		if(isset($_GET["editar"])){
 			$nome = $_GET["editar"];
 			$contato = $this->contatoDao->retornarContatoPorNome($nome);

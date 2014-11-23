@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once ("models/usuario.class.php");
 include_once ("models/gerenciadorUsuarios.class.php");
 class LoginController {

@@ -105,8 +105,7 @@ abstract class Dao {
 			$sql = "SELECT $columns FROM $this->tableName $filter";
 			
 			$this->rs = Connection::getConn ()->query ( $sql );
-			
-			echo $this->rs->columnCount();
+						
 			$this->rowsSelAffected = $this->rs->rowCount ();
 			
 			// encerrar a concexao com o banco

@@ -74,5 +74,8 @@ class ContatoDao extends Dao {
 		
 		parent::update ( "nome, apelido, telephone, celular, email, dt_nasc, idUsuario", $values );
 	}
+	public function excluirContato($contato) {
+		parent::delete ( " nome = '" . $contato->getNome () . "'" );
+	}
 }
 ?>

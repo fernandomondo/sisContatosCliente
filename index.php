@@ -10,7 +10,9 @@
 <title>Sistema Contatos</title>
 </head>
 <body>
-<?php include("menu.php"); echo  $_SESSION ["usuario"]; ?>
+<?php 
+session_start(); 
+include("menu.php"); ?>
 <div class="container">
 
 		<h1>Sistema de Contatos</h1> 
